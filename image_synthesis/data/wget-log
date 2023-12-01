@@ -1,0 +1,6 @@
+--2023-12-02 06:04:33--  https://facevcstandard.blob.core.windows.net/t-shuygu/release_model/VQ-Diffusion/pretrained_model/taming_dvae/taming_f8_8192_openimages_last.pth?sv=2021-10-04
+Resolving facevcstandard.blob.core.windows.net (facevcstandard.blob.core.windows.net)... 20.60.229.161
+Connecting to facevcstandard.blob.core.windows.net (facevcstandard.blob.core.windows.net)|20.60.229.161|:443... connected.
+HTTP request sent, awaiting response... 409 Public access is not permitted on this storage account.
+2023-12-02 06:04:34 ERROR 409: Public access is not permitted on this storage account..
+

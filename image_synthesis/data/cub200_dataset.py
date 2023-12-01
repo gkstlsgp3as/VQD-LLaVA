@@ -14,7 +14,8 @@ def load_img(filepath):
     return img
 
 class Cub200Dataset(Dataset):
-    def __init__(self, data_root, phase = 'train', im_preprocessor_config=None, drop_caption_rate=0.0):
+
+    def __init__(self, data_root, phase = 'train', im_preprocessor_config=None, drop_caption_rate=0.0, download=False):
         self.transform = instantiate_from_config(im_preprocessor_config)
         self.image_folder = os.path.join(data_root, 'images')
         self.root = os.path.join(data_root, phase)
@@ -25,7 +26,6 @@ class Cub200Dataset(Dataset):
 
         # load all caption file to dict in memory
         self.caption_dict = {}
-        
         for index in tqdm(range(self.num)):
             name = self.name_list[index]
             this_text_path = os.path.join(data_root, 'text', 'text', name+'.txt')

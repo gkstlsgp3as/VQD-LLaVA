@@ -71,6 +71,9 @@ def get_args():
 
     parser.add_argument('--debug', action='store_true', default=False,
                         help='set as debug mode')
+    
+    parser.add_argument('--captions', type=str, default='text',
+                        help='the types of caption to use')
     # args for modify config
     parser.add_argument(
         "opts",

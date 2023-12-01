@@ -268,7 +268,7 @@ class TamingGumbelVQVAE(BaseCodec):
 
     def get_tokens(self, imgs, **kwargs):
         imgs = self.preprocess(imgs)
-        code = self.enc(imgs)
+        code = self.enc(imgs).cpu()
         if self.quantize_number != 0:
             code = self.full_to_quantize[code]
         output = {'token': code}
