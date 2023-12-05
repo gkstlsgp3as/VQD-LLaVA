@@ -85,6 +85,15 @@ bash install_req.sh
 │  ├── filenames.pickle
 ```
 
+### CUB-200 - noisy, long, short text
+You can download each text caption in below links:
+long: https://drive.google.com/file/d/1mdgylOkD8py0pDRxa4iXv2euM8ewbgJh/view?usp=sharing
+
+short:TBD
+
+noisy:TBD
+
+
 ### ImageNet
 
 ```
