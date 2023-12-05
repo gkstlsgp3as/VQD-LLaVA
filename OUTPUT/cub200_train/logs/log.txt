@@ -54,3 +54,11 @@
 2023-12-05-22-26: cub200_train: train: Epoch 0/400 iter 400/553 || | loss: 9.4275 || lr_lr: 0.000182247 || data_time: 0.0s | fbward_time: 0.7s | iter_time: 0.7s | iter_avg_time: 0.7s | epoch_time: 04m:53s | spend_time: 04m:53s | left_time: 1d:20h:51m:50s
 2023-12-05-22-27: using tensorboard
 2023-12-05-22-35: using tensorboard
+2023-12-05-22-41: using tensorboard
+2023-12-05-22-41: Get lr 3e-06 from base lr 3e-06 with none
+2023-12-05-22-41: {'overall': {'trainable': '370.77M', 'non_trainable': '126.29M', 'total': '497.06M'}, 'content_codec': {'trainable': '0', 'non_trainable': '65.8M', 'total': '65.8M'}, 'condition_codec': {'trainable': '0', 'non_trainable': '0', 'total': '0'}, 'transformer': {'trainable': '370.77M', 'non_trainable': '60.49M', 'total': '431.26M'}}
+2023-12-05-22-41: Distributed, begin DDP the model...
+2023-12-05-22-41: Distributed, DDP model done!
+2023-12-05-22-41: cub200_train: global rank 0: prepare solver done!
+2023-12-05-22-41: cub200_train: global rank 0: start training...
+2023-12-05-22-41: cub200_train: train: Epoch 0/400 iter 0/553 || | loss: 9.6810 || lr_lr: 3.447e-06 || data_time: 8.0s | fbward_time: 2.2s | iter_time: 10.2s | iter_avg_time: 10.2s | epoch_time: 10s | spend_time: 10s | left_time: 26d:00h:18m:54s

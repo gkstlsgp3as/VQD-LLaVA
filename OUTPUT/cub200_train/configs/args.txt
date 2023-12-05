@@ -568,3 +568,35 @@
   tensorboard: True
   timestamp: False
   world_size: 4
+==> torch version: 1.12.1+cu113
+==> cudnn version: 8902
+==> Cmd:
+['train.py', '--name', 'cub200_train', '--config_file', 'configs/cub200.yaml', '--num_node', '1', '--tensorboard', '--caption_type', 'text']
+==> args:
+  amp: False
+  auto_resume: False
+  caption_type: text
+  config_file: configs/cub200.yaml
+  cudnn_deterministic: False
+  cwd: /home/shhan/VQ-Diffusion
+  debug: False
+  dist_url: tcp://127.0.0.1:29500
+  distributed: True
+  global_rank: 0
+  gpu: None
+  load_path: None
+  local_rank: 0
+  log_frequency: 100
+  name: cub200_train
+  ngpus_per_node: 4
+  node_rank: 0
+  num_node: 1
+  opts: []
+  output: OUTPUT
+  resume_name: None
+  save_dir: OUTPUT/cub200_train
+  seed: None
+  sync_bn: False
+  tensorboard: True
+  timestamp: False
+  world_size: 4
