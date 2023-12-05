@@ -89,7 +89,7 @@ bash install_req.sh
 You can download each text caption in below links:
 long: https://drive.google.com/file/d/1mdgylOkD8py0pDRxa4iXv2euM8ewbgJh/view?usp=sharing
 
-short:TBD
+short:https://drive.google.com/file/d/1B7gHZ0LnQ9SfzKhaDlI_Sbx6bYkUI_9f/view?usp=sharing
 
 noisy:TBD
 
