@@ -29,3 +29,28 @@
 2023-12-02-06-36: {'overall': {'trainable': '370.77M', 'non_trainable': '126.29M', 'total': '497.06M'}, 'content_codec': {'trainable': '0', 'non_trainable': '65.8M', 'total': '65.8M'}, 'condition_codec': {'trainable': '0', 'non_trainable': '0', 'total': '0'}, 'transformer': {'trainable': '370.77M', 'non_trainable': '60.49M', 'total': '431.26M'}}
 2023-12-02-06-36: cub200_train: global rank 0: prepare solver done!
 2023-12-02-06-36: cub200_train: global rank 0: start training...
+2023-12-02-06-52: using tensorboard
+2023-12-02-06-52: Get lr 3e-06 from base lr 3e-06 with none
+2023-12-02-06-52: {'overall': {'trainable': '370.77M', 'non_trainable': '126.29M', 'total': '497.06M'}, 'content_codec': {'trainable': '0', 'non_trainable': '65.8M', 'total': '65.8M'}, 'condition_codec': {'trainable': '0', 'non_trainable': '0', 'total': '0'}, 'transformer': {'trainable': '370.77M', 'non_trainable': '60.49M', 'total': '431.26M'}}
+2023-12-02-06-52: Distributed, begin DDP the model...
+2023-12-02-06-52: Distributed, DDP model done!
+2023-12-02-06-52: cub200_train: global rank 0: prepare solver done!
+2023-12-02-06-52: cub200_train: global rank 0: start training...
+2023-12-05-22-19: using tensorboard
+2023-12-05-22-20: using tensorboard
+2023-12-05-22-20: using tensorboard
+2023-12-05-22-20: using tensorboard
+2023-12-05-22-21: using tensorboard
+2023-12-05-22-21: Get lr 3e-06 from base lr 3e-06 with none
+2023-12-05-22-21: {'overall': {'trainable': '370.77M', 'non_trainable': '126.29M', 'total': '497.06M'}, 'content_codec': {'trainable': '0', 'non_trainable': '65.8M', 'total': '65.8M'}, 'condition_codec': {'trainable': '0', 'non_trainable': '0', 'total': '0'}, 'transformer': {'trainable': '370.77M', 'non_trainable': '60.49M', 'total': '431.26M'}}
+2023-12-05-22-21: Distributed, begin DDP the model...
+2023-12-05-22-21: Distributed, DDP model done!
+2023-12-05-22-21: cub200_train: global rank 0: prepare solver done!
+2023-12-05-22-21: cub200_train: global rank 0: start training...
+2023-12-05-22-21: cub200_train: train: Epoch 0/400 iter 0/553 || | loss: 10.0312 || lr_lr: 3.447e-06 || data_time: 8.7s | fbward_time: 2.3s | iter_time: 11.0s | iter_avg_time: 11.0s | epoch_time: 10s | spend_time: 10s | left_time: 28d:02h:07m:36s
+2023-12-05-22-23: cub200_train: train: Epoch 0/400 iter 100/553 || | loss: 9.5325 || lr_lr: 4.8147e-05 || data_time: 0.0s | fbward_time: 0.7s | iter_time: 0.7s | iter_avg_time: 0.8s | epoch_time: 01m:22s | spend_time: 01m:22s | left_time: 2d:02h:23m:23s
+2023-12-05-22-24: cub200_train: train: Epoch 0/400 iter 200/553 || | loss: 9.3361 || lr_lr: 9.2847e-05 || data_time: 0.0s | fbward_time: 0.6s | iter_time: 0.7s | iter_avg_time: 0.8s | epoch_time: 02m:32s | spend_time: 02m:32s | left_time: 1d:22h:41m:02s
+2023-12-05-22-25: cub200_train: train: Epoch 0/400 iter 300/553 || | loss: 9.3728 || lr_lr: 0.000137547 || data_time: 0.0s | fbward_time: 0.6s | iter_time: 0.6s | iter_avg_time: 0.7s | epoch_time: 03m:43s | spend_time: 03m:43s | left_time: 1d:21h:31m:53s
+2023-12-05-22-26: cub200_train: train: Epoch 0/400 iter 400/553 || | loss: 9.4275 || lr_lr: 0.000182247 || data_time: 0.0s | fbward_time: 0.7s | iter_time: 0.7s | iter_avg_time: 0.7s | epoch_time: 04m:53s | spend_time: 04m:53s | left_time: 1d:20h:51m:50s
+2023-12-05-22-27: using tensorboard
+2023-12-05-22-35: using tensorboard

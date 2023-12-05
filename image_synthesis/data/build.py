@@ -4,11 +4,12 @@ from torch.utils.data import ConcatDataset
 from image_synthesis.utils.misc import instantiate_from_config
 from image_synthesis.distributed.distributed import is_distributed
 
-def build_dataloader(config, args=None, return_dataset=False):
+def build_dataloader(config, args=None, return_dataset=False, caption_type='text'):
     dataset_cfg = config['dataloader']
     train_dataset = []
     for ds_cfg in dataset_cfg['train_datasets']:
         ds_cfg['params']['data_root'] = dataset_cfg.get('data_root', '')
+        ds_cfg['params']['caption_type'] = caption_type
         ds = instantiate_from_config(ds_cfg)
         train_dataset.append(ds)
     if len(train_dataset) > 1:

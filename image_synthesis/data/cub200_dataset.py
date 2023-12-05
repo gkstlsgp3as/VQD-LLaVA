@@ -15,12 +15,13 @@ def load_img(filepath):
 
 class Cub200Dataset(Dataset):
 
-    def __init__(self, data_root, phase = 'train', im_preprocessor_config=None, drop_caption_rate=0.0, download=False):
+    def __init__(self, data_root, phase = 'train', im_preprocessor_config=None, drop_caption_rate=0.0, download=False, caption_type='text'):
         self.transform = instantiate_from_config(im_preprocessor_config)
         self.image_folder = os.path.join(data_root, 'images')
         self.root = os.path.join(data_root, phase)
         pickle_path = os.path.join(self.root, "filenames.pickle")
         self.name_list = pickle.load(open(pickle_path, 'rb'), encoding="bytes")
+        self.caption_type = caption_type
 
         self.num = len(self.name_list)
 
@@ -28,7 +29,7 @@ class Cub200Dataset(Dataset):
         self.caption_dict = {}
         for index in tqdm(range(self.num)):
             name = self.name_list[index]
-            this_text_path = os.path.join(data_root, 'text', 'text', name+'.txt')
+            this_text_path = os.path.join(data_root, 'text', caption_type, name+'.txt')
             with open(this_text_path, 'r') as f:
                 caption = f.readlines()
             self.caption_dict[name] = caption
