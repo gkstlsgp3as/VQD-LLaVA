@@ -52,7 +52,7 @@ class Cub200Dataset(Dataset):
         image = np.array(image).astype(np.uint8)
         image = self.transform(image = image)['image']
         caption_list = self.caption_dict[name]
-        caption = random.choice(caption_list).replace('\n', '').lower()
+        caption = caption_list[0]#random.choice(caption_list).replace('\n', '').lower()
         
         data = {
                 'image': np.transpose(image.astype(np.float32), (2, 0, 1)),
