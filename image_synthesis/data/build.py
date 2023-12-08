@@ -20,6 +20,7 @@ def build_dataloader(config, args=None, return_dataset=False, caption_type='text
     val_dataset = []
     for ds_cfg in dataset_cfg['validation_datasets']:
         ds_cfg['params']['data_root'] = dataset_cfg.get('data_root', '')
+        ds_cfg['params']['caption_type'] = caption_type
         ds = instantiate_from_config(ds_cfg)
         val_dataset.append(ds)
     if len(val_dataset) > 1:

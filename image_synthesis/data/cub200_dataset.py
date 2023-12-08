@@ -32,6 +32,8 @@ class Cub200Dataset(Dataset):
             this_text_path = os.path.join(data_root, 'text', caption_type, name+'.txt')
             with open(this_text_path, 'r') as f:
                 caption = f.readlines()
+                if caption_type in ['long_text','short_text','noisy_text']:
+                    caption = [' '.join(caption).replace("\n","")]
             self.caption_dict[name] = caption
 
         print("load caption file done")

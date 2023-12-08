@@ -145,7 +145,7 @@ def main_worker(local_rank, args):
     logger.save_config(config)
 
     # get model 
-    model = build_model(config, args)
+    model = build_model(config, args, caption_type=args.caption_type)
     # print(model)
     if args.sync_bn:
         model = torch.nn.SyncBatchNorm.convert_sync_batchnorm(model)
