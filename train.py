@@ -145,13 +145,13 @@ def main_worker(local_rank, args):
     logger.save_config(config)
 
     # get model 
-    model = build_model(config, args, caption_type=args.caption_type)
+    model = build_model(config, args)
     # print(model)
     if args.sync_bn:
         model = torch.nn.SyncBatchNorm.convert_sync_batchnorm(model)
 
     # get dataloader
-    dataloader_info = build_dataloader(config, args)
+    dataloader_info = build_dataloader(config, args, caption_type=args.caption_type)
 
     # get solver
     solver = Solver(config=config, args=args, model=model, dataloader=dataloader_info, logger=logger)
