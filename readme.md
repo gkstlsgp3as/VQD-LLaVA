@@ -87,11 +87,13 @@ bash install_req.sh
 
 ### CUB-200 - noisy, long, short text
 You can download each text caption in below links:
+org: https://drive.google.com/file/d/1DtE4IcGmLacDtdJ7hLiowkqDIdhSi7IV/view?usp=sharing
+
 long: https://drive.google.com/file/d/1mdgylOkD8py0pDRxa4iXv2euM8ewbgJh/view?usp=sharing
 
-short:https://drive.google.com/file/d/1B7gHZ0LnQ9SfzKhaDlI_Sbx6bYkUI_9f/view?usp=sharing
+short: https://drive.google.com/file/d/1B7gHZ0LnQ9SfzKhaDlI_Sbx6bYkUI_9f/view?usp=sharing
 
-noisy:TBD
+noisy: https://drive.google.com/file/d/1E2bdaX-nGPwKw7uv8hPmh4Zq2h0MtNuM/view?usp=sharing
 
 
 ### ImageNet
