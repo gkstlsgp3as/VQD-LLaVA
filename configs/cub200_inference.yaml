@@ -37,6 +37,7 @@ model:
         auxiliary_loss_weight: 5.0e-4
         adaptive_auxiliary_loss: True
         mask_weight: [1, 1]    # the loss weight on mask region and non-mask region
+        learnable_cf: True
 
         transformer_config:
           target: image_synthesis.modeling.transformers.transformer_utils.Text2ImageTransformer
@@ -121,8 +122,8 @@ solver:
 dataloader:
   # data_root: data
   data_root: DATA/CUB-200
-  batch_size: 4
-  num_workers: 4
+  batch_size: 1
+  num_workers: 1
   train_datasets: # a list of configures, so we can combine several schedulers
     - target: image_synthesis.data.cub200_dataset.Cub200Dataset
       params:

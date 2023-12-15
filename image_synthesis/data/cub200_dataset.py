@@ -32,8 +32,8 @@ class Cub200Dataset(Dataset):
             this_text_path = os.path.join(data_root, 'text', caption_type, name+'.txt')
             with open(this_text_path, 'r') as f:
                 caption = f.readlines()
-                if caption_type in ['long_text','short_text','noisy_text']:
-                    caption = [' '.join(caption).replace("\n","")]
+                if caption_type in ['long_text','short_text']:
+                    caption = [' '.join(caption)]
             self.caption_dict[name] = caption
 
         print("load caption file done")
@@ -52,9 +52,10 @@ class Cub200Dataset(Dataset):
         image = np.array(image).astype(np.uint8)
         image = self.transform(image = image)['image']
         caption_list = self.caption_dict[name]
-        caption = caption_list[0]#random.choice(caption_list).replace('\n', '').lower()
+        caption = caption_list[0].replace('\n','').lower()#random.choice(caption_list).replace('\n', '').lower()
         
         data = {
+                'path': image_path,
                 'image': np.transpose(image.astype(np.float32), (2, 0, 1)),
                 'text': caption if (self.phase != 'train' or self.drop_rate < 1e-6 or random.random() >= self.drop_rate) else '',
         }

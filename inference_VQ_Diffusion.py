@@ -15,10 +15,15 @@ import argparse
 import numpy as np
 import torchvision
 from PIL import Image
+from tqdm import tqdm
+from pathlib import Path
+import json
 
 from image_synthesis.utils.io import load_yaml_config
 from image_synthesis.modeling.build import build_model
 from image_synthesis.utils.misc import get_model_parameters_info
+
+from image_synthesis.data.build import build_dataloader
 
 class VQ_Diffusion():
     def __init__(self, config, path, imagenet_cf=False):
@@ -103,7 +108,7 @@ class VQ_Diffusion():
             im = Image.fromarray(content[b])
             im.save(save_path)
 
-    def inference_generate_sample_with_condition(self, text, truncation_rate, save_root, batch_size, infer_speed=False, guidance_scale=1.0, prior_rule=0, prior_weight=0, learnable_cf=True):
+    def inference_generate_sample_with_condition(self, text, truncation_rate, save_root, batch_size, infer_speed=False, guidance_scale=1.0, prior_rule=0, prior_weight=0, learnable_cf=True, fl_name=''):
         os.makedirs(save_root, exist_ok=True)
 
         self.model.guidance_scale = guidance_scale
@@ -117,8 +122,8 @@ class VQ_Diffusion():
         condition = text
 
         str_cond = str(condition)
-        save_root_ = os.path.join(save_root, str_cond)
-        os.makedirs(save_root_, exist_ok=True)
+        save_root_ = os.path.join(save_root)#, str_cond)
+        #os.makedirs(save_root_, exist_ok=True)
 
         if infer_speed != False:
             add_string = 'r,time'+str(infer_speed)
@@ -140,13 +145,26 @@ class VQ_Diffusion():
         for b in range(content.shape[0]):
             cnt = b
             save_base_name = '{}'.format(str(cnt).zfill(6))
-            save_path = os.path.join(save_root_, save_base_name+'.png')
+            save_path = os.path.join(save_root_, fl_name+'_'+save_base_name+'.png')
             im = Image.fromarray(content[b])
             im.save(save_path)
+            print("saved: ", save_path)
 
 
 if __name__ == '__main__':
-    VQ_Diffusion_model = VQ_Diffusion(config='configs/ithq.yaml', path='OUTPUT/pretrained_model/ithq_learnable.pth')
+    parser = argparse.ArgumentParser(description='PyTorch Training script')
+    parser.add_argument('--config_file', type=str, default='configs/cub200_inference.yaml', 
+                        help='path of config file')
+    parser.add_argument('--pretrained', type=str, default='OUTPUT/long_text3/cub200_train/checkpoint/000149e_331949iter.pth', 
+                        help='the pretrained model weights to generate images from text')
+    parser.add_argument('--save_root', type=str, default='RESULT/long_text', 
+                        help='the output directory to save the generated images')
+    parser.add_argument('--caption_type', type=str, default='long_text',
+                        help='the types of caption to use')
+    
+    args = parser.parse_args()
+    args.distributed = False
+    VQ_Diffusion_model = VQ_Diffusion(config=args.config_file, path=args.pretrained)
 
     # Inference VQ-Diffusion
     # VQ_Diffusion_model.inference_generate_sample_with_condition("teddy bear playing in the pool", truncation_rate=0.86, save_root="RESULT", batch_size=4)
@@ -156,9 +174,23 @@ if __name__ == '__main__':
     # VQ_Diffusion_model.inference_generate_sample_with_condition("a long exposure photo of waterfall", truncation_rate=1.0, save_root="RESULT", batch_size=4, guidance_scale=5.0, learnable_cf=False)
 
     # Inference Improved VQ-Diffusion with learnable classifier-free sampling
-    VQ_Diffusion_model.inference_generate_sample_with_condition("teddy bear playing in the pool", truncation_rate=1.0, save_root="RESULT", batch_size=4, guidance_scale=5.0)
-    # VQ_Diffusion_model.inference_generate_sample_with_condition("a long exposure photo of waterfall", truncation_rate=1.0, save_root="RESULT", batch_size=4, guidance_scale=5.0)
+    ## get the conditions from CUB200 test 
+    config = load_yaml_config(args.config_file)
+    #caption_type = args.save_root.split('/')[-1]
+    dataloader = build_dataloader(config, args, caption_type=args.caption_type)
+    str_cond = {}
+    str_file = open(Path(args.save_root)/'caption_condition_{}.json'.format(args.caption_type), "w")
+    nb = len(dataloader['validation_loader'])
+    pbar = enumerate(dataloader['validation_loader']); pbar = tqdm(pbar, total=nb); breakpoint()
 
+    for itr, batch in pbar:
+        fl_name = batch['path'][0].split('/')[-1]
+        str_cond[fl_name] = batch['text'][0]
+        VQ_Diffusion_model.inference_generate_sample_with_condition(batch['text'][0], truncation_rate=1.0, save_root=args.save_root, batch_size=4, guidance_scale=5.0, fl_name=fl_name[:-4])
+    # VQ_Diffusion_model.inference_generate_sample_with_condition("a long exposure photo of waterfall", truncation_rate=1.0, save_root="RESULT", batch_size=4, guidance_scale=5.0)
+    str_file.write(json.dumps(str_cond))  
+    str_file.flush()
+    str_file.close()
     # Inference Improved VQ-Diffusion with fast/high-quality inference
     # VQ_Diffusion_model.inference_generate_sample_with_condition("a long exposure photo of waterfall", truncation_rate=0.86, save_root="RESULT", batch_size=4, infer_speed=0.5) # high-quality inference, 0.5x inference speed
     # VQ_Diffusion_model.inference_generate_sample_with_condition("a long exposure photo of waterfall", truncation_rate=0.86, save_root="RESULT", batch_size=4, infer_speed=2) # fast inference, 2x inference speed
