@@ -181,7 +181,7 @@ if __name__ == '__main__':
     str_cond = {}
     str_file = open(Path(args.save_root)/'caption_condition_{}.json'.format(args.caption_type), "w")
     nb = len(dataloader['validation_loader'])
-    pbar = enumerate(dataloader['validation_loader']); pbar = tqdm(pbar, total=nb); breakpoint()
+    pbar = enumerate(dataloader['validation_loader']); pbar = tqdm(pbar, total=nb); 
 
     for itr, batch in pbar:
         fl_name = batch['path'][0].split('/')[-1]
