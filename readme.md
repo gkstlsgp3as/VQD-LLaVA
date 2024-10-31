@@ -12,7 +12,7 @@ Text-to-Image generation models like Stable Diffusion and Midjourney are demonst
 * Python 3.10.13, Pytorch 2.1.0+cu121
 
 ### :point_right: Results
-https://github.com/user-attachments/assets/c8e791b5-eea6-4c63-93f2-42f7bdd82100
+![2)results](https://github.com/user-attachments/assets/96e2d302-cf70-45d4-ac69-f0457d4a58d0)
 
 
 ### :airplane: Training
