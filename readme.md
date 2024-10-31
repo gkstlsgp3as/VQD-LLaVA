@@ -1,4 +1,4 @@
-# Better Image Captioning EnhancesText-to-Image Generation Performance![image](https://github.com/user-attachments/assets/58403a0c-e112-436e-8001-37337f742412)
+![image](https://github.com/user-attachments/assets/58403a0c-e112-436e-8001-37337f742412)
 
 [Shinhye Han](https://gkstlsgp3as.github.io/), [Sehyun Kwon](https://github.com/sehyunkwon), Jaeksuk Kim
 
